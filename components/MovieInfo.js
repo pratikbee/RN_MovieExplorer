@@ -38,7 +38,7 @@ const MovieInfo=(props)=>{
                         "method": "GET",
                         "headers": {
                             "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
-                            "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+                            "x-rapidapi-key": "<your key>"
                         }
                     });
          const cast = await castjson.json();
@@ -55,7 +55,7 @@ const MovieInfo=(props)=>{
                                 "method": "GET",
                                 "headers": {
                                     "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
-                                    "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+                                    "x-rapidapi-key": "<your key>"
                                 }
                             }).then(responseNEW=>responseNEW.json()).then(jsonNew=>{castarray.push(jsonNew);})
                             .catch(err=>console.log(err));
