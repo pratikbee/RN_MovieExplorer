@@ -1,0 +1,78 @@
+navigation=useNavigation();
+    const dispatch=useDispatch();
+    useEffect(()=>{dispatch(getNewMovies());getGenre();},[]);
+
+    
+    const data = useSelector(state => state);
+    const casttoot=data.movie.moviecastarray;
+   
+    
+    
+    
+    const getGenre=()=>{
+     const genre= props.route.params.results.gen[0].genre;
+     dispatch(AddGenre(genre))
+    }
+
+    
+
+    const getNewMovies = () => {
+     try {
+       return async (dispatch) => {
+         const castjson= await fetch("https://data-imdb1.p.rapidapi.com/movie/id/"+props.route.params.results.imdb_id+"/cast/", {
+                        "method": "GET",
+                        "headers": {
+                            "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
+                            "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+                        }
+                    });
+         const cast = await castjson.json();
+         
+         if (cast) {
+           
+           const castarray = [];
+           for (var index=4;index<20;index++) 
+           {
+             
+             const URL='https://data-imdb1.p.rapidapi.com/actor/id/'+cast.results.roles[index].actor.imdb_id+'/';
+             
+            await fetch(URL, {
+                                "method": "GET",
+                                "headers": {
+                                    "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
+                                    "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+                                }
+                            }).then(responseNEW=>responseNEW.json()).then(jsonNew=>{castarray.push(jsonNew);})
+                            .catch(err=>console.log(err));
+               
+   
+             
+            
+           }
+           
+           
+           dispatch(Movie_Cast_Array(castarray));
+           
+          
+         } else {
+           console.log('unable to fetch');
+         }
+       };
+     } catch (error) {
+       console.log('error');
+     }
+   };  
+    
+    
+  
+      
+
+      
+        
+
+       
+    
+    
+
+       
+       
