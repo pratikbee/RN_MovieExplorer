@@ -70,7 +70,7 @@ const ID_URL1 = "http://47.254.174.28/series/byYear/2021/?page=2&page_size=10";
             "method": "GET",
             "headers": {
               "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
-              "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+              "x-rapidapi-key": "<your key>"
             }
           })
             .then(responseNEW => responseNEW.json())
@@ -107,7 +107,7 @@ const ID_URL2 = "https://data-imdb1.p.rapidapi.com/series/order/byPopularity/?pa
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
-          "x-rapidapi-key": "ad8e26125bmsh7f8080efbc2506ap1f606bjsndb91972d2b0d"
+          "x-rapidapi-key": "<your key>"
         }
       });
       const data = await result.json();
